@@ -184,6 +184,8 @@ function employeeListFunction(){
       	city.innerHTML = fullEmployeeRoster[i].city;
       	years.innerHTML = fullEmployeeRoster[i].experience;
       	portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
+      	
+
       })
      }
  };
@@ -200,6 +202,8 @@ submitBtn.addEventListener('click', function (){
 			employeeYears.innerHTML = fullEmployeeRoster[i]['experience'];
 			employeeCity.innerHTML = fullEmployeeRoster[i]['city'];
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
+			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
+			
 	}
 }
 })
