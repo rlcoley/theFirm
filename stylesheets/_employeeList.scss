@@ -1,10 +1,19 @@
 .employeeContainer {
-  position: absolute;
-  top: 400px;
-  width: 80%;
+  position: relative;
+  top: 300px;
+  width: 60%;
   height: 20%;
   border-radius: 10px;
   border-top-right-radius: 0px;
   margin: 10px auto;
 }
 
+#employeeList {
+  position: relative;
+  display: inline-block;
+  margin-top: -143px;
+  width: 60%;
+  left: 20%;
+
+
+}

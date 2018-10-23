@@ -17,24 +17,25 @@
         <ion-icon name="ios-search"></ion-icon>
       </button>
     </nav>
-    <button type="button" class="expensetab">expenses</button>
     <div class="employee_wrapper">
       <div class="employeeimage"></div>
       <div class="right_side">
-        <div class="name" >Name: <span class="firstlast" id="firstlast"></span></div>
+        <div class="name" > <span class="firstlast" id="firstlast"></span></div>
         <div class="name"><span class="firstlast"></span></div>
-        <ul>
-          <li class="years">Years: <span class="yearsonjob" id='years'></span></li>
-          <li class="city">City: <span class="cityofemployment" id='city'></span></li>
+        <ul id="detailsList">
+          <li class="years"><span class="yearsonjob" id='years'></span></li>
+          <li class="city"><span class="cityofemployment" id='city'></span></li>
         </ul>
+        <button id="expense" type="button" class="expensetab">expenses</button>
       </div>
     </div>
 
-    <div class='emplyeeList'>
+
       <div id='employeeList'></div>
     </div>
     
     <canvas id="firmChart" width="500" height="500"></canvas>
+
 
     <footer>
       <p>the firm corporation&copy;</p>

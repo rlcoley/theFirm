@@ -4,8 +4,10 @@ var employeeCity = document.querySelector('.cityofemployment');
 var searchBar = document.querySelector('.searchbar');
 var submitBtn = document.querySelector('.submitbtn');
 var portrait = document.querySelector('.employeeimage');
-var fullEmployeeRoster = [];
+var expense = document.getElementById('expense')
+var detailsList = document.getElementById('detailsList')
 
+var fullEmployeeRoster = [];
 var cities = []
 var fromPhilly = []
 var fromBarcelona = []
@@ -50,7 +52,7 @@ var portraitArray = [
 	{"Paul" : 'images/portraits/man12.jpg'},
 	{"Rad" : 'images/portraits/man13.jpeg'},
 	{"Ringo" : 'images/portraits/man14.jpg'},
-	{"Scott" : 'images/portraits/man15.jpg'},
+	{"Scott" : 'images/portraits/man15.jpeg'},
 	{"Spas" : 'images/portraits/man16.jpg'},
 	{"Suzanne" : 'images/portraits/woman13.jpeg'},
 	{"Uros" : 'images/portraits/man17.jpeg'},
@@ -65,14 +67,21 @@ function initialEmployeeArrayCreation(){
 			console.log(theFirmInfo);
   			var theFirmInfoEmployees = objectSort(theFirmInfo.employees,"fname"); //the employees get sorted and isolated and put in a temporary variable
 	  		for(let i=0; i<theFirmInfoEmployees.length;i++){ //the employee info gets combined with their change and pushed to the global array for all of the employees.
-	  			fullEmployeeRoster.push({
+				//adds a promotion notice into the object
+				let promotionHolder = "";
+				if ((theFirmInfo["change"][theFirmInfoEmployees[i]["fname"]])/810>0.3){
+					promotionHolder = "Up for promotion";
+				}else {
+					promotionHolder = "Not up for a promotion";
+				}
+				fullEmployeeRoster.push({
 					"fname" : theFirmInfoEmployees[i]["fname"],
 					"lname" : theFirmInfoEmployees[i]["lname"],
 					"city" : theFirmInfoEmployees[i]["city"],"experience":theFirmInfoEmployees[i]["experience"],
 					"change": theFirmInfo["change"][theFirmInfoEmployees[i]["fname"]],
-					"portrait":portraitArray[i][theFirmInfoEmployees[i]['fname']]
+					"portrait":portraitArray[i][theFirmInfoEmployees[i]['fname']],
+					"promotion": promotionHolder
 				});
-
 	  		}
 
 	  		// console.log(fullEmployeeRoster);
@@ -81,11 +90,12 @@ function initialEmployeeArrayCreation(){
 
 	  		employeeListFunction();
 
+        runExpenses();
 		}
 	})
 }
 
-// Get all cities, then push into each array basesd on city 
+// Get all cities, then push into each array basesd on city
 function getCities() {
 
   for (var i = 0; i < fullEmployeeRoster.length; i++) {
@@ -148,11 +158,10 @@ function employeeListFunction(){
       container.className = "employeeContainer";
       // container.style.border = "2px solid black";
       container.style.borderRadius = "5px";
-      container.style.width = "60%";
+      container.style.width = "50%";
       container.style.height = "40%";
-      container.style.marginTop = "150px"
-      container.style.display = "inline-block";
-      container.style.backgroundColor = "white";
+      container.style.marginTop = "50px"
+      container.style.display = "inline";
 
       // container.style.boxShadow = "2px 2px 2px";
       container.style.overflow = "hidden";
@@ -179,15 +188,27 @@ function employeeListFunction(){
       employeeTile.innerHTML = fullEmployeeRoster[i].fname+" " +fullEmployeeRoster[i].lname;
       // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
 
-
+      // allows user to click on particular employee and displays their information in display
       employeeTile.addEventListener('click', function(){
-      	personname.innerHTML = fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
-      	city.innerHTML = fullEmployeeRoster[i].city;
-      	years.innerHTML = fullEmployeeRoster[i].experience;
+      	personname.innerHTML =fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
+      	city.innerHTML ="City: " + fullEmployeeRoster[i].city;
+      	years.innerHTML ="Experience: " + fullEmployeeRoster[i].experience;
+      	portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
+        personname.style.display ='block'
+        city.style.display ='block'
+        years.style.display ='block'
+
+        expense.addEventListener('click', function() {
+            employeeYears.innerHTML = "Expenses saved: "+ fullEmployeeRoster[i].change;
+            employeeCity.innerHTML = 'Promotion candidate: ' + fullEmployeeRoster[i].promotion;
+            detailsList.style.marginTop = '20px';
+            detailsList.style.fontSize ='1em'
+        })
 
       })
      }
  };
+
 
 
 
@@ -200,6 +221,8 @@ submitBtn.addEventListener('click', function (){
 			employeeYears.innerHTML = fullEmployeeRoster[i]['experience'];
 			employeeCity.innerHTML = fullEmployeeRoster[i]['city'];
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
+			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
+
 	}
 }
 })
@@ -299,3 +322,5 @@ window.setTimeout(function(){
   createChart(true,fullEmployeeRoster[9]);
 }, 500);
 
+function runExpenses() {
+}
