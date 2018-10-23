@@ -6,6 +6,7 @@ var submitBtn = document.querySelector('.submitbtn');
 var portrait = document.querySelector('.employeeimage');
 var expense = document.getElementById('expense')
 var detailsList = document.getElementById('detailsList')
+var employeeWrapper = document.getElementById('employeeWrapper');
 
 var fullEmployeeRoster = [];
 var cities = []
@@ -203,7 +204,12 @@ function employeeListFunction(){
             employeeYears.innerHTML = "Expenses saved: $"+ fullEmployeeRoster[i].change;
             employeeCity.innerHTML = 'Promotion candidate: ' + fullEmployeeRoster[i].promotion;
             detailsList.style.marginTop = '20px';
-            detailsList.style.fontSize ='1em'
+            detailsList.style.fontSize ='1em';
+             
+        })
+
+      })
+     }
             var expenseCompareButton = document.createElement("div");
             expenseCompareButton.style.border = "2px solid white";
             expenseCompareButton.style.borderRadius = "5px";
@@ -217,13 +223,22 @@ function employeeListFunction(){
             expenseCompareButton.style.marginRight = "30px";
             expenseCompareButton.innerHTML = "Compare Expenses";
             detailsList.appendChild(expenseCompareButton);
-              expenseCompareButton.addEventListener('click', function(){
-                createChart(false,fullEmployeeRoster[i]);
-              })
-        })
 
-      })
-     }
+            expenseCompareButton.addEventListener('click', function() {
+            	var modal = document.createElement('div');
+            	employeeWrapper.appendChild(modal);
+            	modal.style.width = "90%";
+            	modal.style.height = "100%";
+            	modal.style.zIndex = "4";
+            	modal.style.border = "2px solid black";
+            	modal.style.position = "absolute";
+            	modal.style.left = "75px";
+            	modal.style.top = "100px";
+            	modal.style.backgroundColor = "white"
+            	modal.appendChild(firmChart);
+            	console.log('hey')
+            	createChart(false,fullEmployeeRoster[i]);
+    })        
  };
 
 
