@@ -65,7 +65,7 @@ function initialEmployeeArrayCreation(){
 			console.log(theFirmInfo);
   			var theFirmInfoEmployees = objectSort(theFirmInfo.employees,"fname"); //the employees get sorted and isolated and put in a temporary variable
 	  		for(let i=0; i<theFirmInfoEmployees.length;i++){ //the employee info gets combined with their change and pushed to the global array for all of the employees.
-	  			
+				//adds a promotion notice into the object
 				let promotionHolder = "";
 				if ((theFirmInfo["change"][theFirmInfoEmployees[i]["fname"]])/810>0.3){
 					promotionHolder = "Up for promotion";
