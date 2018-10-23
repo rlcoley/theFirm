@@ -3,7 +3,9 @@ var employeeYears = document.querySelector('.yearsonjob');
 var employeeCity = document.querySelector('.cityofemployment');
 var fullEmployeeRoster = [];
 var employeeList = document.getElementById('employeeList');
-
+var personname = document.getElementById('firstlast');
+var city = document.getElementById('city');
+var years = document.getElementById('years');
 
 var employeeExperience = document.querySelector('.yearsofexperiences');
 
@@ -59,14 +61,15 @@ function employeeListFunction(){
       var container = document.createElement("div");
       container.id = 'employeeContainer';
       container.className = "employeeContainer";
-      container.style.border = "2px solid black";
+      // container.style.border = "2px solid black";
       container.style.borderRadius = "5px";
       container.style.width = "90%";
       container.style.height = "40%";
+      container.style.marginTop = "150px"
       container.style.display = "inline-block";
-      // container.style.backgroundColor = "#E5D0C4";
-      container.style.backgroundColor = "#D0D0D0";
-      container.style.boxShadow = "2px 2px 2px";
+      container.style.backgroundColor = "white";
+      
+      // container.style.boxShadow = "2px 2px 2px";
       container.style.overflow = "hidden";
       employeeList.appendChild(container);
 
@@ -78,6 +81,7 @@ function employeeListFunction(){
       employeeTile.className = "employeeTile";
       container.appendChild(employeeTile)[i]
       employeeTile.style.border = "2px solid black";
+      employeeTile.style.backgroundColor = "#E5D0C4";
       employeeTile.style.width = "100px";
       employeeTile.style.height = "100px";
       employeeTile.style.display = "inline-block";
@@ -90,9 +94,10 @@ function employeeListFunction(){
       // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
 
 
-      div.addEventListener('click', function(){
-      	hintContainer.style.border = "2px solid black";
-    	hintContainer.style.backgroundColor = "#D0D0D0";
+      employeeTile.addEventListener('click', function(){
+      	personname.innerHTML = fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
+      	city.innerHTML = fullEmployeeRoster[i].city;
+      	years.innerHTML = fullEmployeeRoster[i].experience;
 
       })
      }

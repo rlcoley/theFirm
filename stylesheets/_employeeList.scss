@@ -1,16 +1,10 @@
-.employeeList {
-  display: grid;
-  top: 100px;
-  background-color: black;
-  grid-template-columns: 1fr 1fr;
-  position: relative;
-  width: 90%;
+.employeeContainer {
+  position: absolute;
+  top: 400px;
+  width: 80%;
   height: 20%;
   border-radius: 10px;
   border-top-right-radius: 0px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
-.employeeWrapper{
-  display: none;
-}
