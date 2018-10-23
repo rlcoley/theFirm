@@ -1,10 +1,14 @@
-.expensetab {
+.wrapper {
   position: relative;
-  top: -27vh;
-  left: 26.6%;
+}
+
+.expensetab {
+  position: absolute;
+  top: -7.5%;
+  left: 50%;
   border: none;
   font-size: 0.9em;
-  background-color: #16425B;
+  background-color: #2F6690;
   color: #F7F9FC;
   border-radius: 10px 5px 0px 0px;
 }
