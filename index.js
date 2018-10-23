@@ -1,11 +1,8 @@
 var employeeName = document.querySelector('.firstlast');
 var employeeYears = document.querySelector('.yearsonjob');
 var employeeCity = document.querySelector('.cityofemployment');
+var submitBtn = document.querySelector('.submitbtn');
 var fullEmployeeRoster = [];
-
-var employeeExperience = document.querySelector('.yearsofexperiences');
-
-
 
 function initialEmployeeArrayCreation(){
 	$.ajax({url:"https://bitbucket.org/OggiDanailov/firm/raw/2df585250847781831c5ab8ab4a7fdff8f5ef8fc/finances.json",
@@ -43,3 +40,8 @@ function objectSort (toBeSorted, keyName) { //arg is an an array of objects to b
 
     // console.log(fullEmployeeRoster[fname] + " " + fullEmployeeRoster[lname]);
   }
+
+
+submitBtn.addEventListener('click', function => {
+	console.log('hello')
+})
