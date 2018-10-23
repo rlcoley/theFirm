@@ -4,8 +4,9 @@ var employeeCity = document.querySelector('.cityofemployment');
 var searchBar = document.querySelector('.searchbar');
 var submitBtn = document.querySelector('.submitbtn');
 var portrait = document.querySelector('.employeeimage');
-var fullEmployeeRoster = [];
+var expense = document.getElementById('expense')
 
+var fullEmployeeRoster = [];
 var cities = []
 var fromPhilly = []
 var fromBarcelona = []
@@ -213,4 +214,12 @@ submitBtn.addEventListener('click', function (){
 			
 	}
 }
+})
+
+
+expense.addEventListener('click', function() {
+  employeeName.style.display = 'none'
+  employeeYears.style.display = 'none'
+  employeeCity.style.display = 'none'
+  // employeeName.innerHTML = "Expenses: "+ fullEmployeeRoster[i].change;
 })
