@@ -50,7 +50,7 @@ var portraitArray = [
 	{"Paul" : 'images/portraits/man12.jpg'},
 	{"Rad" : 'images/portraits/man13.jpeg'},
 	{"Ringo" : 'images/portraits/man14.jpg'},
-	{"Scott" : 'images/portraits/man15.jpg'},
+	{"Scott" : 'images/portraits/man15.jpeg'},
 	{"Spas" : 'images/portraits/man16.jpg'},
 	{"Suzanne" : 'images/portraits/woman13.jpeg'},
 	{"Uros" : 'images/portraits/man17.jpeg'},
@@ -148,11 +148,10 @@ function employeeListFunction(){
       container.className = "employeeContainer";
       // container.style.border = "2px solid black";
       container.style.borderRadius = "5px";
-      container.style.width = "60%";
+      container.style.width = "50%";
       container.style.height = "40%";
-      container.style.marginTop = "150px"
-      container.style.display = "inline-block";
-      container.style.backgroundColor = "white";
+      container.style.marginTop = "50px"
+      container.style.display = "inline";
 
       // container.style.boxShadow = "2px 2px 2px";
       container.style.overflow = "hidden";
@@ -179,15 +178,16 @@ function employeeListFunction(){
       employeeTile.innerHTML = fullEmployeeRoster[i].fname+" " +fullEmployeeRoster[i].lname;
       // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
 
-
+      // allows user to click on particular employee and displays their information in display
       employeeTile.addEventListener('click', function(){
       	personname.innerHTML = fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
       	city.innerHTML = fullEmployeeRoster[i].city;
       	years.innerHTML = fullEmployeeRoster[i].experience;
-
+      	portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
       })
      }
  };
+
 
 
 
