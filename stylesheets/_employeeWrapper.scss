@@ -1,12 +1,12 @@
 .expensetab {
   position: relative;
   top: 100px;
-  left: 813px;
+  left: 63.65%;
   border: none;
   font-size: 0.9em;
   background-color: #16425B;
   color: #F7F9FC;
-  border-radius: 10px 2px 0px 0px ;
+  border-radius: 10px 5px 0px 0px ;
 }
 
 .employee_wrapper {
@@ -20,6 +20,7 @@
   height: 250px;
   border-radius: 10px;
   border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
   margin: 0 auto;
 }
 
@@ -33,7 +34,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 110% 100%;
-  background-image: url('../images/portraits/woman13.jpeg');
+  background-image: url('../images/portraits/woman15.jpeg');
 }
 
 .name{
