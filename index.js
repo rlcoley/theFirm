@@ -85,7 +85,7 @@ function initialEmployeeArrayCreation(){
 	})
 }
 
-// Get all cities, then push into each array basesd on city 
+// Get all cities, then push into each array basesd on city
 function getCities() {
 
   for (var i = 0; i < fullEmployeeRoster.length; i++) {
@@ -164,7 +164,7 @@ function employeeListFunction(){
       employeeTile.id = "employeeTile"+[i];
       employeeTile.className = "employeeTile";
       container.appendChild(employeeTile)[i]
-      employeeTile.style.border = "2px solid black";
+      // employeeTile.style.border = "2px solid black";
       employeeTile.style.backgroundColor = "#3A7CA5";
       employeeTile.style.color = "white";
       employeeTile.style.width = "100px";
@@ -181,10 +181,10 @@ function employeeListFunction(){
       // allows user to click on particular employee and displays their information in display
       employeeTile.addEventListener('click', function(){
       	personname.innerHTML = fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
-      	city.innerHTML = fullEmployeeRoster[i].city;
-      	years.innerHTML = fullEmployeeRoster[i].experience;
+      	city.innerHTML = "City: " + fullEmployeeRoster[i].city;
+      	years.innerHTML = "Years: " + fullEmployeeRoster[i].experience;
       	portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
-      	
+
 
       })
      }
@@ -203,7 +203,7 @@ submitBtn.addEventListener('click', function (){
 			employeeCity.innerHTML = fullEmployeeRoster[i]['city'];
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
-			
+
 	}
 }
 })
