@@ -180,11 +180,12 @@ function employeeListFunction(){
       employeeTile.style.width = "100px";
       employeeTile.style.height = "100px";
       employeeTile.style.display = "inline-block";
-      employeeTile.style.margin = "10px"
-      employeeTile.style.borderRadius = "5px"
-      employeeTile.style.fontSize = "1em"
-      employeeTile.style.textAlign = "center"
-      employeeTile.style.overflow = "hidden"
+      employeeTile.style.margin = "10px";
+      // employeeTile.style.paddingTop = '50px'
+      employeeTile.style.borderRadius = "5px";
+      employeeTile.style.fontSize = "1em";
+      employeeTile.style.textAlign = "center";
+      employeeTile.style.overflow = "hidden";
       employeeTile.innerHTML = fullEmployeeRoster[i].fname+" " +fullEmployeeRoster[i].lname;
       // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
 
@@ -199,10 +200,26 @@ function employeeListFunction(){
         years.style.display ='block'
 
         expense.addEventListener('click', function() {
-            employeeYears.innerHTML = "Expenses saved: "+ fullEmployeeRoster[i].change;
+            employeeYears.innerHTML = "Expenses saved: $"+ fullEmployeeRoster[i].change;
             employeeCity.innerHTML = 'Promotion candidate: ' + fullEmployeeRoster[i].promotion;
             detailsList.style.marginTop = '20px';
             detailsList.style.fontSize ='1em'
+            var expenseCompareButton = document.createElement("div");
+            expenseCompareButton.style.border = "2px solid white";
+            expenseCompareButton.style.borderRadius = "5px";
+            expenseCompareButton.style.backgroundColor = "#3A7CA5";
+            expenseCompareButton.style.color = "white";
+            expenseCompareButton.style.width = "150px";
+            expenseCompareButton.style.height = "20px";
+            expenseCompareButton.style.textAlign = "center";
+            expenseCompareButton.style.display = "inline-block";
+            expenseCompareButton.style.marginBottom = "10px";
+            expenseCompareButton.style.marginRight = "30px";
+            expenseCompareButton.innerHTML = "Compare Expenses";
+            detailsList.appendChild(expenseCompareButton);
+              expenseCompareButton.addEventListener('click', function(){
+                createChart(false,fullEmployeeRoster[i]);
+              })
         })
 
       })
@@ -218,8 +235,8 @@ submitBtn.addEventListener('click', function (){
 		if(searchBar.value.toLowerCase() == fullEmployeeRoster[i]["fname"].toLowerCase() || searchBar.value == fullEmployeeRoster[i]["lname"].toLowerCase()){
 			console.log(fullEmployeeRoster[i]);
 			employeeName.innerHTML = `${fullEmployeeRoster[i]['fname']}	${fullEmployeeRoster[i]['lname']}	`;
-			employeeYears.innerHTML = fullEmployeeRoster[i]['experience'];
-			employeeCity.innerHTML = fullEmployeeRoster[i]['city'];
+			employeeYears.innerHTML ="Experience: " + fullEmployeeRoster[i]['experience'];
+			employeeCity.innerHTML = "City: " +  fullEmployeeRoster[i]['city'];
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
 
