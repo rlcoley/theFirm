@@ -5,10 +5,21 @@ var searchBar = document.querySelector('.searchbar');
 var submitBtn = document.querySelector('.submitbtn');
 var portrait = document.querySelector('.employeeimage');
 var fullEmployeeRoster = [];
+
+var cities = []
+var fromPhilly = []
+var fromBarcelona = []
+var fromSofia = []
+var fromNYC = []
+var fromBerlin = []
+var fromWarsaw = []
+var employeeExperience = document.querySelector('.yearsofexperiences');
+
 var employeeList = document.getElementById('employeeList');
 var personname = document.getElementById('firstlast');
 var city = document.getElementById('city');
 var years = document.getElementById('years');
+
 
 
 // Array of portrait objects containing image file path for each employee.
@@ -63,22 +74,61 @@ function initialEmployeeArrayCreation(){
 				});
 
 	  		}
+
+	  		// console.log(fullEmployeeRoster);
+        getCities()
+
 	  		console.log(fullEmployeeRoster);
 	  		employeeListFunction();
+
 		}
 	})
 }
 
+function getCities() {
+
+  for (var i = 0; i < fullEmployeeRoster.length; i++) {
+    cities.push({
+      city: fullEmployeeRoster[i].city
+    })
+    if (fullEmployeeRoster[i].city == "Philadelphia") {
+      fromPhilly.push(fullEmployeeRoster[i])
+    }if (fullEmployeeRoster[i].city == "Barcelona") {
+      fromBarcelona.push(fullEmployeeRoster[i])
+    }if (fullEmployeeRoster[i].city == "Sofia") {
+      fromSofia.push(fullEmployeeRoster[i])
+    }if (fullEmployeeRoster[i].city == "NYC") {
+      fromNYC.push(fullEmployeeRoster[i])
+    }if (fullEmployeeRoster[i].city == "Warsaw") {
+      fromWarsaw.push(fullEmployeeRoster[i])
+    }else if(fullEmployeeRoster[i].city == "Berlin") {
+      fromBerlin.push(fullEmployeeRoster[i])
+    }
+  }
+
+  // for (var i = 0; i < cities.length; i++) {
+  //   console.log(cities[i]);
+  // }
+  console.log(fromBarcelona);
+  console.log(fromBerlin);
+  console.log(fromNYC);
+  console.log(fromSofia);
+  console.log(fromPhilly);
+  console.log(fromWarsaw);
+
+  // console.log(fullEmployeeRoster);
+  // }
+}
 initialEmployeeArrayCreation();
 
 function objectSort (toBeSorted, keyName) { //arg is an an array of objects to be sorted and the key to sort by
-	console.log(toBeSorted[1][keyName]);
-	console.log(keyName);
+	// console.log(toBeSorted[1][keyName]);
+	// console.log(keyName);
     var holder1 = {}; //will hold the objects to be switched
     var holder2 = {}; //other holder
     for(var i=0;i<toBeSorted.length-1;i++){
         for(let j = 0; j<toBeSorted.length-(i+1);j++){
-        	console.log("toBeSorted "+toBeSorted[j][keyName]);
+        	// console.log("toBeSorted "+toBeSorted[j][keyName]);
             if(toBeSorted[j][keyName]>toBeSorted[j+1][keyName]){
                 holder1=toBeSorted[j];
                 holder2=toBeSorted[j+1]
@@ -87,6 +137,7 @@ function objectSort (toBeSorted, keyName) { //arg is an an array of objects to b
             }
         }
     }
+    // console.log(fullEmployeeRoster["fname"] + fullEmployeeRoster['lname']);
     return toBeSorted;
 }	
 
@@ -142,7 +193,6 @@ function employeeListFunction(){
 
 
 
-    // console.log(fullEmployeeRoster[fname] + " " + fullEmployeeRoster[lname]);
   }
 
 
