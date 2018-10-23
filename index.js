@@ -78,7 +78,7 @@ function initialEmployeeArrayCreation(){
 	  		// console.log(fullEmployeeRoster);
         getCities()
 
-	  		console.log(fullEmployeeRoster);
+
 	  		employeeListFunction();
 
 		}
@@ -203,3 +203,99 @@ submitBtn.addEventListener('click', function (){
 	}
 }
 })
+
+//charts 
+
+function createChart(allPeople, whichPerson){
+  setTimeout(function(){
+    var chartLabel = [];
+    var chartData = [];
+    var chartBorderColor = [];
+    var chartBarColor = [];
+    var chartBarColorList = [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ];
+    var chartBorderColorList= [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ];
+    if (allPeople==true){
+      for(let i=0; i<fullEmployeeRoster.length; i++){
+        chartLabel.push(fullEmployeeRoster[i].fname);
+        chartData.push(fullEmployeeRoster[i].change);
+      }
+    } else {
+      let citySpending = 0;
+      let experienceSpending = 0;
+      let experienceCount = 0;
+      let cityCount = 0;
+      chartLabel.push("employees from: "+whichPerson.city+" average");
+      chartLabel.push("empolyees of "+whichPerson.experience+" years of experience average");
+      chartLabel.push(whichPerson.lname+", "+whichPerson.fname+": total change");
+      for(let i = 0; i < fullEmployeeRoster.length;i++){
+        if(fullEmployeeRoster[i].city==whichPerson.city){
+          citySpending += fullEmployeeRoster[i].change;
+          cityCount++;
+        }
+        if(fullEmployeeRoster[i].experience == whichPerson.experience){
+          experienceSpending += fullEmployeeRoster[i].change;
+          experienceCount++;
+        }
+      }
+      chartData.push(citySpending/cityCount);
+      chartData.push(experienceSpending/experienceCount);
+      chartData.push(whichPerson.change);
+    }
+
+    // setTimeout(function(){
+    for(let i=0; i<chartLabel.length; i++){
+      chartBorderColor.push(chartBorderColorList[i%chartBorderColorList.length]);
+      chartBarColor.push(chartBarColorList[i%chartBarColorList.length]);
+    }
+  // },500);
+
+    console.log(chartData);
+    console.log(chartLabel);
+    console.log(chartBorderColor);
+    console.log(chartBarColor)
+    var chartSection = document.getElementById("firmChart").getContext('2d');
+    var firmChart = new Chart(chartSection, {
+        type: 'bar',
+        data: {
+            labels: chartLabel,
+            // labels:[fullEmployeeRoster.fname];
+            datasets: [{
+                label: "Eployee Change from Spending Budget",
+                data: chartData,
+                backgroundColor: chartBarColor,
+                borderColor: chartBorderColor,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+  }, 500);
+}
+
+
+window.setTimeout(function(){
+  createChart(true,fullEmployeeRoster[9]);
+}, 500);
+
