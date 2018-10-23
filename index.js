@@ -244,7 +244,7 @@ submitBtn.addEventListener('click', function (){
 }
 })
 
-//charts 
+//charts
 
 function createChart(allPeople, whichPerson){
   setTimeout(function(){
