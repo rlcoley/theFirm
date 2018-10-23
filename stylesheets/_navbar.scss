@@ -1,5 +1,5 @@
 nav {
-  background-color: #2F6690;
+  background-color: $main-navbar-color;
   padding: 7px;
   padding-left: 20px;
   box-shadow: 0 1px 1px 0 #16425B;
@@ -8,7 +8,7 @@ nav {
 .titlename {
   display: inline-block;
   margin: 0px;
-  color: white;
+  color: $main-text-color;
   margin-right: 15px;
   // letter-spacing: 2px;
 }
