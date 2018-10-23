@@ -65,7 +65,7 @@ function initialEmployeeArrayCreation(){
 			console.log(theFirmInfo);
   			var theFirmInfoEmployees = objectSort(theFirmInfo.employees,"fname"); //the employees get sorted and isolated and put in a temporary variable
 	  		for(let i=0; i<theFirmInfoEmployees.length;i++){ //the employee info gets combined with their change and pushed to the global array for all of the employees.
-	  			
+				//adds a promotion notice into the object
 				let promotionHolder = "";
 				if ((theFirmInfo["change"][theFirmInfoEmployees[i]["fname"]])/810>0.3){
 					promotionHolder = "Up for promotion";
@@ -92,7 +92,7 @@ function initialEmployeeArrayCreation(){
 	})
 }
 
-// Get all cities, then push into each array basesd on city
+// Get all cities, then push into each array basesd on city 
 function getCities() {
 
   for (var i = 0; i < fullEmployeeRoster.length; i++) {
@@ -171,7 +171,7 @@ function employeeListFunction(){
       employeeTile.id = "employeeTile"+[i];
       employeeTile.className = "employeeTile";
       container.appendChild(employeeTile)[i]
-      // employeeTile.style.border = "2px solid black";
+      employeeTile.style.border = "2px solid black";
       employeeTile.style.backgroundColor = "#3A7CA5";
       employeeTile.style.color = "white";
       employeeTile.style.width = "100px";
@@ -188,10 +188,10 @@ function employeeListFunction(){
       // allows user to click on particular employee and displays their information in display
       employeeTile.addEventListener('click', function(){
       	personname.innerHTML = fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
-      	city.innerHTML = "City: " + fullEmployeeRoster[i].city;
-      	years.innerHTML = "Years: " + fullEmployeeRoster[i].experience;
+      	city.innerHTML = fullEmployeeRoster[i].city;
+      	years.innerHTML = fullEmployeeRoster[i].experience;
       	portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
-
+      	
 
       })
      }
@@ -210,7 +210,7 @@ submitBtn.addEventListener('click', function (){
 			employeeCity.innerHTML = fullEmployeeRoster[i]['city'];
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
-
+			
 	}
 }
 })
