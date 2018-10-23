@@ -65,14 +65,21 @@ function initialEmployeeArrayCreation(){
 			console.log(theFirmInfo);
   			var theFirmInfoEmployees = objectSort(theFirmInfo.employees,"fname"); //the employees get sorted and isolated and put in a temporary variable
 	  		for(let i=0; i<theFirmInfoEmployees.length;i++){ //the employee info gets combined with their change and pushed to the global array for all of the employees.
-	  			fullEmployeeRoster.push({
+	  			
+				let promotionHolder = "";
+				if ((theFirmInfo["change"][theFirmInfoEmployees[i]["fname"]])/810>0.3){
+					promotionHolder = "Up for promotion";
+				}else {
+					promotionHolder = "Not up for a promotion";
+				}
+				fullEmployeeRoster.push({
 					"fname" : theFirmInfoEmployees[i]["fname"],
 					"lname" : theFirmInfoEmployees[i]["lname"],
 					"city" : theFirmInfoEmployees[i]["city"],"experience":theFirmInfoEmployees[i]["experience"],
 					"change": theFirmInfo["change"][theFirmInfoEmployees[i]["fname"]],
-					"portrait":portraitArray[i][theFirmInfoEmployees[i]['fname']]
+					"portrait":portraitArray[i][theFirmInfoEmployees[i]['fname']],
+					"promotion": promotionHolder
 				});
-
 	  		}
 
 	  		// console.log(fullEmployeeRoster);
