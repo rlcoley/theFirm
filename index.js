@@ -5,6 +5,7 @@ var searchBar = document.querySelector('.searchbar');
 var submitBtn = document.querySelector('.submitbtn');
 var portrait = document.querySelector('.employeeimage');
 var expense = document.getElementById('expense')
+var detailsList = document.getElementById('detailsList')
 
 var fullEmployeeRoster = [];
 var cities = []
@@ -89,11 +90,12 @@ function initialEmployeeArrayCreation(){
 	  		console.log(fullEmployeeRoster);
 	  		employeeListFunction();
 
+        runExpenses();
 		}
 	})
 }
 
-// Get all cities, then push into each array basesd on city 
+// Get all cities, then push into each array basesd on city
 function getCities() {
 
   for (var i = 0; i < fullEmployeeRoster.length; i++) {
@@ -188,11 +190,20 @@ function employeeListFunction(){
 
       // allows user to click on particular employee and displays their information in display
       employeeTile.addEventListener('click', function(){
-      	personname.innerHTML = fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
-      	city.innerHTML = fullEmployeeRoster[i].city;
-      	years.innerHTML = fullEmployeeRoster[i].experience;
+      	personname.innerHTML =fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
+      	city.innerHTML ="City: " + fullEmployeeRoster[i].city;
+      	years.innerHTML ="Experience: " + fullEmployeeRoster[i].experience;
       	portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
-      	
+        personname.style.display ='block'
+        city.style.display ='block'
+        years.style.display ='block'
+
+        expense.addEventListener('click', function() {
+            employeeYears.innerHTML = "Expenses saved: "+ fullEmployeeRoster[i].change;
+            employeeCity.innerHTML = 'Promotion candidate: ' + fullEmployeeRoster[i].promotion;
+            detailsList.style.marginTop = '20px';
+            detailsList.style.fontSize ='1em'
+        })
 
       })
      }
@@ -211,15 +222,10 @@ submitBtn.addEventListener('click', function (){
 			employeeCity.innerHTML = fullEmployeeRoster[i]['city'];
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
 			portrait.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
-			
+
 	}
 }
 })
 
-
-expense.addEventListener('click', function() {
-  employeeName.style.display = 'none'
-  employeeYears.style.display = 'none'
-  employeeCity.style.display = 'none'
-  // employeeName.innerHTML = "Expenses: "+ fullEmployeeRoster[i].change;
-})
+function runExpenses() {
+}
