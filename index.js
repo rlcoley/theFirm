@@ -5,6 +5,10 @@ var searchBar = document.querySelector('.searchbar');
 var submitBtn = document.querySelector('.submitbtn');
 var portrait = document.querySelector('.employeeimage');
 var fullEmployeeRoster = [];
+var employeeList = document.getElementById('employeeList');
+var personname = document.getElementById('firstlast');
+var city = document.getElementById('city');
+var years = document.getElementById('years');
 
 
 // Array of portrait objects containing image file path for each employee.
@@ -60,6 +64,7 @@ function initialEmployeeArrayCreation(){
 
 	  		}
 	  		console.log(fullEmployeeRoster);
+	  		employeeListFunction();
 		}
 	})
 }
@@ -83,6 +88,59 @@ function objectSort (toBeSorted, keyName) { //arg is an an array of objects to b
         }
     }
     return toBeSorted;
+}	
+
+
+
+function employeeListFunction(){
+  //on start button, creates a container box which holds each letter of the word to guess
+      var container = document.createElement("div");
+      container.id = 'employeeContainer';
+      container.className = "employeeContainer";
+      // container.style.border = "2px solid black";
+      container.style.borderRadius = "5px";
+      container.style.width = "60%";
+      container.style.height = "40%";
+      container.style.marginTop = "150px"
+      container.style.display = "inline-block";
+      container.style.backgroundColor = "white";
+      
+      // container.style.boxShadow = "2px 2px 2px";
+      container.style.overflow = "hidden";
+      employeeList.appendChild(container);
+
+      //on start button, creates a box for each letter of the word to guess
+  for (let i = 0; i < fullEmployeeRoster.length;i++){
+      var employeeTile = document.createElement("div");
+      employeeList.setAttribute("align", "center");
+      employeeTile.id = "employeeTile"+[i];
+      employeeTile.className = "employeeTile";
+      container.appendChild(employeeTile)[i]
+      employeeTile.style.border = "2px solid black";
+      employeeTile.style.backgroundColor = "#3A7CA5";
+      employeeTile.style.color = "white";
+      employeeTile.style.width = "100px";
+      employeeTile.style.height = "100px";
+      employeeTile.style.display = "inline-block";
+      employeeTile.style.margin = "10px"
+      employeeTile.style.borderRadius = "5px"
+      employeeTile.style.fontSize = "1em"
+      employeeTile.style.textAlign = "center"
+      employeeTile.style.overflow = "hidden"
+      employeeTile.innerHTML = fullEmployeeRoster[i].fname+" " +fullEmployeeRoster[i].lname;
+      // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
+
+
+      employeeTile.addEventListener('click', function(){
+      	personname.innerHTML = fullEmployeeRoster[i].fname + " " +fullEmployeeRoster[i].lname;
+      	city.innerHTML = fullEmployeeRoster[i].city;
+      	years.innerHTML = fullEmployeeRoster[i].experience;
+
+      })
+     }
+ };
+
+
 
     // console.log(fullEmployeeRoster[fname] + " " + fullEmployeeRoster[lname]);
   }
