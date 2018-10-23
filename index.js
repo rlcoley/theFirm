@@ -167,7 +167,7 @@ function employeeListFunction(){
       employeeTile.id = "employeeTile"+[i];
       employeeTile.className = "employeeTile";
       container.appendChild(employeeTile)[i]
-      employeeTile.style.border = "2px solid black";
+      employeeTile.style.border = "2px solid white";
       employeeTile.style.backgroundColor = "#3A7CA5";
       employeeTile.style.color = "white";
       employeeTile.style.width = "100px";
