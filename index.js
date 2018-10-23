@@ -2,6 +2,8 @@ var employeeName = document.querySelector('.firstlast');
 var employeeYears = document.querySelector('.yearsonjob');
 var employeeCity = document.querySelector('.cityofemployment');
 var fullEmployeeRoster = [];
+var employeeList = document.getElementById('employeeList');
+
 
 var employeeExperience = document.querySelector('.yearsofexperiences');
 
@@ -24,6 +26,7 @@ function initialEmployeeArrayCreation(){
 	  			fullEmployeeRoster.push({"fname" : theFirmInfoEmployees[i]["fname"], "lname" : theFirmInfoEmployees[i]["lname"],"city" : theFirmInfoEmployees[i]["city"],"experience":theFirmInfoEmployees[i]["experience"], "change": theFirmInfo["change"][theFirmInfoEmployees[i]["fname"]],"promotion" : promotionHolder});
 	  		}
 	  		console.log(fullEmployeeRoster);
+	  		employeeListFunction();
 		}
 	})
 }
@@ -48,3 +51,51 @@ function objectSort (toBeSorted, keyName) { //arg is an an array of objects to b
     }
     return toBeSorted;
 }	
+
+
+
+function employeeListFunction(){
+  //on start button, creates a container box which holds each letter of the word to guess
+      var container = document.createElement("div");
+      container.id = 'employeeContainer';
+      container.className = "employeeContainer";
+      container.style.border = "2px solid black";
+      container.style.borderRadius = "5px";
+      container.style.width = "90%";
+      container.style.height = "40%";
+      container.style.display = "inline-block";
+      // container.style.backgroundColor = "#E5D0C4";
+      container.style.backgroundColor = "#D0D0D0";
+      container.style.boxShadow = "2px 2px 2px";
+      container.style.overflow = "hidden";
+      employeeList.appendChild(container);
+
+      //on start button, creates a box for each letter of the word to guess
+  for (let i = 0; i < fullEmployeeRoster.length;i++){
+      var employeeTile = document.createElement("div");
+      employeeList.setAttribute("align", "center");
+      employeeTile.id = "employeeTile"+[i];
+      employeeTile.className = "employeeTile";
+      container.appendChild(employeeTile)[i]
+      employeeTile.style.border = "2px solid black";
+      employeeTile.style.width = "100px";
+      employeeTile.style.height = "100px";
+      employeeTile.style.display = "inline-block";
+      employeeTile.style.margin = "10px"
+      employeeTile.style.borderRadius = "5px"
+      employeeTile.style.fontSize = "1em"
+      employeeTile.style.textAlign = "center"
+      employeeTile.style.overflow = "hidden"
+      employeeTile.innerHTML = fullEmployeeRoster[i].fname+" "+fullEmployeeRoster[i].lname;
+      // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
+
+
+      div.addEventListener('click', function(){
+      	hintContainer.style.border = "2px solid black";
+    	hintContainer.style.backgroundColor = "#D0D0D0";
+
+      })
+     }
+ };
+
+
