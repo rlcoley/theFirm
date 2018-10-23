@@ -85,6 +85,7 @@ function initialEmployeeArrayCreation(){
 	})
 }
 
+// Get all cities, then push into each array basesd on city 
 function getCities() {
 
   for (var i = 0; i < fullEmployeeRoster.length; i++) {
@@ -106,9 +107,6 @@ function getCities() {
     }
   }
 
-  // for (var i = 0; i < cities.length; i++) {
-  //   console.log(cities[i]);
-  // }
   console.log(fromBarcelona);
   console.log(fromBerlin);
   console.log(fromNYC);
@@ -139,7 +137,7 @@ function objectSort (toBeSorted, keyName) { //arg is an an array of objects to b
     }
     // console.log(fullEmployeeRoster["fname"] + fullEmployeeRoster['lname']);
     return toBeSorted;
-}	
+}
 
 
 
@@ -155,7 +153,7 @@ function employeeListFunction(){
       container.style.marginTop = "150px"
       container.style.display = "inline-block";
       container.style.backgroundColor = "white";
-      
+
       // container.style.boxShadow = "2px 2px 2px";
       container.style.overflow = "hidden";
       employeeList.appendChild(container);
@@ -191,9 +189,6 @@ function employeeListFunction(){
      }
  };
 
-
-
-  }
 
 
 // Event listener for search bar
