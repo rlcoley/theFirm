@@ -63,7 +63,7 @@ function employeeListFunction(){
       container.className = "employeeContainer";
       // container.style.border = "2px solid black";
       container.style.borderRadius = "5px";
-      container.style.width = "90%";
+      container.style.width = "60%";
       container.style.height = "40%";
       container.style.marginTop = "150px"
       container.style.display = "inline-block";
@@ -81,7 +81,8 @@ function employeeListFunction(){
       employeeTile.className = "employeeTile";
       container.appendChild(employeeTile)[i]
       employeeTile.style.border = "2px solid black";
-      employeeTile.style.backgroundColor = "#E5D0C4";
+      employeeTile.style.backgroundColor = "#3A7CA5";
+      employeeTile.style.color = "white";
       employeeTile.style.width = "100px";
       employeeTile.style.height = "100px";
       employeeTile.style.display = "inline-block";
@@ -90,7 +91,7 @@ function employeeListFunction(){
       employeeTile.style.fontSize = "1em"
       employeeTile.style.textAlign = "center"
       employeeTile.style.overflow = "hidden"
-      employeeTile.innerHTML = fullEmployeeRoster[i].fname+" "+fullEmployeeRoster[i].lname;
+      employeeTile.innerHTML = fullEmployeeRoster[i].fname+" " +fullEmployeeRoster[i].lname;
       // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
 
 
