@@ -91,7 +91,7 @@ function initialEmployeeArrayCreation(){
 
 	  		employeeListFunction();
 
-        runExpenses();
+        // runExpenses();
 		}
 	})
 }
@@ -227,17 +227,32 @@ function employeeListFunction(){
             expenseCompareButton.addEventListener('click', function() {
             	var modal = document.createElement('div');
             	employeeWrapper.appendChild(modal);
-            	modal.style.width = "90%";
-            	modal.style.height = "100%";
-            	modal.style.zIndex = "4";
+            	modal.style.width = "90vw";
+            	modal.style.height = "85vh";
+            	modal.style.zIndex = "3";
             	modal.style.border = "2px solid black";
             	modal.style.position = "absolute";
             	modal.style.left = "75px";
-            	modal.style.top = "100px";
-            	modal.style.backgroundColor = "white"
+            	modal.style.top = "200px";
+            	modal.style.backgroundColor = "rgba(255,255,255, 0.98)"
+            	document.body.appendChild(modal)
             	modal.appendChild(firmChart);
-            	console.log('hey')
-            	createChart(false,fullEmployeeRoster[i]);
+            	var close = document.createElement('button')
+					close.style.width = "30px";
+					close.style.height = "30px"
+					close.style.zIndex = "1";
+					close.style.backgroundColor = "rgba(255,255,255, 0.98)"
+					close.style.border = "1px solid"
+					close.style.boxShadow = "2px 2px 5px"
+					close.innerHTML = "X"
+					close.style.marginLeft = '95%';
+					close.style.marginTop = '15px';
+					modal.appendChild(close);
+					close.addEventListener('click', function() {
+					modal.style.display = "none";
+})
+					
+            	// createChart(false,fullEmployeeRoster[i]);
     })        
  };
 
@@ -323,13 +338,14 @@ function createChart(allPeople, whichPerson){
     console.log(chartBorderColor);
     console.log(chartBarColor)
     var chartSection = document.getElementById("firmChart").getContext('2d');
+
     var firmChart = new Chart(chartSection, {
         type: 'bar',
         data: {
             labels: chartLabel,
             // labels:[fullEmployeeRoster.fname];
             datasets: [{
-                label: "Eployee Change from Spending Budget",
+                label: "Remainder of spending budget",
                 data: chartData,
                 backgroundColor: chartBarColor,
                 borderColor: chartBorderColor,
@@ -346,13 +362,15 @@ function createChart(allPeople, whichPerson){
             }
         }
     });
-  }, 500);
+  }, );
 }
+
 
 
 window.setTimeout(function(){
   createChart(true,fullEmployeeRoster[9]);
-}, 500);
+}, 400);
 
-function runExpenses() {
-}
+
+// function runExpenses() {
+// }
