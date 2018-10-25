@@ -6,6 +6,7 @@ var submitBtn = document.querySelector('.submitbtn');
 var portrait = document.querySelector('.employeeimage');
 var expense = document.getElementById('expense')
 var detailsList = document.getElementById('detailsList')
+var employeeWrapper = document.getElementById('employeeWrapper');
 
 var fullEmployeeRoster = [];
 var cities = []
@@ -90,7 +91,7 @@ function initialEmployeeArrayCreation(){
 
 	  		employeeListFunction();
 
-        runExpenses();
+        // runExpenses();
 		}
 	})
 }
@@ -152,13 +153,13 @@ function objectSort (toBeSorted, keyName) { //arg is an an array of objects to b
 
 
 function employeeListFunction(){
-  //on start button, creates a container box which holds each letter of the word to guess
+  //on load, creates a container box for each employee in the firm
       var container = document.createElement("div");
       container.id = 'employeeContainer';
       container.className = "employeeContainer";
       // container.style.border = "2px solid black";
       container.style.borderRadius = "5px";
-      container.style.width = "50%";
+      container.style.width = "70%";
       container.style.height = "40%";
       container.style.marginTop = "50px"
       container.style.display = "inline";
@@ -167,7 +168,7 @@ function employeeListFunction(){
       container.style.overflow = "hidden";
       employeeList.appendChild(container);
 
-      //on start button, creates a box for each letter of the word to guess
+      //on load, creates a container box for each employee in the firm
   for (let i = 0; i < fullEmployeeRoster.length;i++){
       var employeeTile = document.createElement("div");
       employeeList.setAttribute("align", "center");
@@ -181,12 +182,29 @@ function employeeListFunction(){
       employeeTile.style.height = "100px";
       employeeTile.style.display = "inline-block";
       employeeTile.style.margin = "10px";
-      // employeeTile.style.paddingTop = '50px'
-      employeeTile.style.borderRadius = "5px";
-      employeeTile.style.fontSize = "1em";
+      employeeTile.style.fontSize = "1.1em";
       employeeTile.style.textAlign = "center";
       employeeTile.style.overflow = "hidden";
-      employeeTile.innerHTML = fullEmployeeRoster[i].fname+" " +fullEmployeeRoster[i].lname;
+      employeeTile.innerHTML = fullEmployeeRoster[i].fname+" "+ "<br />" +fullEmployeeRoster[i].lname;
+      // employeeTile.style.paddingTop = '50px'
+      employeeTile.style.borderRadius = "5px";
+      
+      var employeeTilePicture = document.createElement("div");
+      employeeTile.setAttribute("align", "center");
+      employeeTilePicture.id = "employeeTilePicture"+[i];
+      employeeTilePicture.className = "employeeTilePicture";
+      employeeTile.appendChild(employeeTilePicture)[i]
+      employeeTilePicture.style.border = "2px solid white";
+      employeeTilePicture.style.borderRadius = "5px";      
+      employeeTilePicture.style.backgroundImage = 'url(' +fullEmployeeRoster[i]['portrait']+')';
+      employeeTilePicture.style.backgroundSize = '100% 100%';
+      employeeTilePicture.style.color = "white";
+      employeeTilePicture.style.width = "50px";
+      employeeTilePicture.style.height = "50px";
+      employeeTilePicture.style.marginLeft = "20px";
+      
+  
+
       // employeeTile.innerHTML = "City: " +fullEmployeeRoster[i].city;
 
       // allows user to click on particular employee and displays their information in display
@@ -198,12 +216,19 @@ function employeeListFunction(){
         personname.style.display ='block'
         city.style.display ='block'
         years.style.display ='block'
+        
 
         expense.addEventListener('click', function() {
             employeeYears.innerHTML = "Expenses saved: $"+ fullEmployeeRoster[i].change;
             employeeCity.innerHTML = 'Promotion candidate: ' + fullEmployeeRoster[i].promotion;
             detailsList.style.marginTop = '20px';
-            detailsList.style.fontSize ='1em'
+            detailsList.style.fontSize ='1em';
+
+             
+        })
+
+      })
+     }
             var expenseCompareButton = document.createElement("div");
             expenseCompareButton.style.border = "2px solid white";
             expenseCompareButton.style.borderRadius = "5px";
@@ -217,13 +242,38 @@ function employeeListFunction(){
             expenseCompareButton.style.marginRight = "30px";
             expenseCompareButton.innerHTML = "Compare Expenses";
             detailsList.appendChild(expenseCompareButton);
-              expenseCompareButton.addEventListener('click', function(){
-                createChart(false,fullEmployeeRoster[i]);
-              })
-        })
 
-      })
-     }
+            expenseCompareButton.addEventListener('click', function() {
+            	createChart(true,fullEmployeeRoster[9])
+            	var modal = document.createElement('div');
+            	employeeWrapper.appendChild(modal);
+            	modal.style.width = "90vw";
+            	modal.style.height = "85vh";
+            	modal.style.zIndex = "3";
+            	modal.style.border = "2px solid black";
+            	modal.style.position = "absolute";
+            	modal.style.left = "75px";
+            	modal.style.top = "150px";
+            	modal.style.backgroundColor = "rgba(255,255,255, 0.98)"
+            	document.body.appendChild(modal)
+            	modal.appendChild(firmChart);
+            	var close = document.createElement('button')
+					close.style.width = "30px";
+					close.style.height = "30px"
+					close.style.zIndex = "1";
+					close.style.backgroundColor = "rgba(255,255,255, 0.98)"
+					close.style.border = "1px solid"
+					close.style.boxShadow = "2px 2px 5px"
+					close.innerHTML = "X"
+					close.style.marginLeft = '95%';
+					close.style.marginTop = '15px';
+					modal.appendChild(close);
+					close.addEventListener('click', function() {
+					modal.style.display = "none";
+})
+					
+            	// createChart(false,fullEmployeeRoster[i]);
+    })        
  };
 
 
@@ -308,13 +358,14 @@ function createChart(allPeople, whichPerson){
     console.log(chartBorderColor);
     console.log(chartBarColor)
     var chartSection = document.getElementById("firmChart").getContext('2d');
+
     var firmChart = new Chart(chartSection, {
         type: 'bar',
         data: {
             labels: chartLabel,
             // labels:[fullEmployeeRoster.fname];
             datasets: [{
-                label: "Eployee Change from Spending Budget",
+                label: "Remainder of spending budget",
                 data: chartData,
                 backgroundColor: chartBarColor,
                 borderColor: chartBorderColor,
@@ -331,13 +382,15 @@ function createChart(allPeople, whichPerson){
             }
         }
     });
-  }, 500);
+  }, );
 }
 
 
-window.setTimeout(function(){
-  createChart(true,fullEmployeeRoster[9]);
-}, 500);
+
+// window.setTimeout(function(){
+//   createChart(true,fullEmployeeRoster[9]);
+// }, 400);
+
 
 function runExpenses() {
 }
