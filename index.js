@@ -225,6 +225,7 @@ function employeeListFunction(){
             detailsList.appendChild(expenseCompareButton);
 
             expenseCompareButton.addEventListener('click', function() {
+            	createChart(true,fullEmployeeRoster[9])
             	var modal = document.createElement('div');
             	employeeWrapper.appendChild(modal);
             	modal.style.width = "90vw";
@@ -367,9 +368,9 @@ function createChart(allPeople, whichPerson){
 
 
 
-window.setTimeout(function(){
-  createChart(true,fullEmployeeRoster[9]);
-}, 400);
+// window.setTimeout(function(){
+//   createChart(true,fullEmployeeRoster[9]);
+// }, 400);
 
 
 // function runExpenses() {
